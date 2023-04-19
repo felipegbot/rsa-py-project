@@ -1,4 +1,3 @@
-
 def verificaPrimo(n):
     if n <= 2:
         return False
@@ -6,28 +5,6 @@ def verificaPrimo(n):
         if n % i == 0:
             return False
     return True
-
-def encryptText(text: str, valorD: int, valorN: int):
-    result = ""
-    for i in range(len(text)):
-        # Pega o código ASCII do caractere
-        charCode = int(ord(text[i]))
-        # calcula (TEXTO ORIGINAL ^ E) mod N
-        charCodeCriptografado = pow(charCode, valorD, valorN)
-        # Converte o código ASCII para caractere e concatena com o resultado
-        result += chr(charCodeCriptografado)
-    return result
-
-def decryptText(text: str, valorE: int, valorN: int):
-    result = ""
-
-    for i in range(len(text)):
-        charCode = int(ord(text[i]))
-        # calcula (TEXTO CRIPTOGRAFADO ^ D) mod N
-        charCodeDescriptografado = pow(charCode, valorE, valorN)
-        result += chr(charCodeDescriptografado)
-    return result
-
 
 def calculaMDC(num1: int, num2: int):
     # Algoritmo de Euclides para encontrar o MDC entre dois números
@@ -55,4 +32,27 @@ def calculaE(d: int, z: int) -> int:
             e = i
             break
     return e
+
+def encryptText(text: str, valorE: int, valorN: int):
+    result = ""
+    for i in range(len(text)):
+        # Pega o código ASCII do caractere descriptografado através da função ord(), iterando sobre o texto
+        charCode = int(ord(text[i]))
+        # calcula (TEXTO ORIGINAL ^ E) mod N
+        charCodeCriptografado = pow(charCode, valorE, valorN)
+        # Converte o código ASCII para caractere e concatena com o resultado
+        result += chr(charCodeCriptografado)
+    return result
+
+def decryptText(text: str, valorD: int, valorN: int):
+    result = ""
+
+    for i in range(len(text)):
+        # A função ord() recebe o caracter que está na posição i do texto e retorna o seu código ASCII
+        charCode = int(ord(text[i])) # O charCode irá guardar o numero do caractere criptografado
+        # calcula (TEXTO CRIPTOGRAFADO ^ D) mod N
+        charCodeDescriptografado = pow(charCode, valorD, valorN)
+        # Converte o código ASCII para caractere e concatena com o resultado
+        result += chr(charCodeDescriptografado)
+    return result
 

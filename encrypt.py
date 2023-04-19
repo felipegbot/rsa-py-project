@@ -34,7 +34,7 @@ def encrypt():
 
     # Calcula N e Z
     n = p * q
-    # Aqui é usado o totiente de Euler para calcular Z
+    # Aqui é usado a formula do totiente de Euler para calcular Z
     z = (p - 1) * (q - 1)
 
     # Imprime os valores de P e Q na tela
